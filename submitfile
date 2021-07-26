@@ -1,0 +1,15 @@
+Universe = vanilla
+Executable = run_job.sh
+Should_Transfer_Files = YES
+WhenToTransferOutput = ON_EXIT
+Transfer_Input_Files = CMSSW_12_0_0_pre2.tar.gz,step2_startup_fixedSiPMTileAreasAndSN_cfg.py,ArabellaGen/GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_323.root 
+notify_user = skim2@cern.ch
+
+Output = out/SN.$(Cluster)_$(Process).stdout
+Error  = err/SN.$(Cluster)_$(Process).stderr
+Log    = log/SN.$(Cluster)_$(Process).log
+
+RequestMemory = 2000
+
+Arguments = inputFile=GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_323.root
+Queue
