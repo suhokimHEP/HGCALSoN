@@ -4,9 +4,9 @@ modes=( \
 # "eol"       \
 # "startup"       \
 # "startup_sn2.0"       \
- "startup_sn2.5"       \
+# "startup_sn2.5"       \
 # "startup_sn3.0"       \
-# "startup_sn4.0"       \
+ "startup_sn4.0"       \
 ) 
 
 
@@ -52,13 +52,17 @@ makeasubmitdir () {
 
 
 }
-declare -a trouble=(61 62 68) #2p0
+declare -a trouble=(306 307 318 322 333 353 358 360 368 379 383 388 406 425 431 433 441 452 456 460) #2p0
 
 for mode in ${modes[@]}
 do 
- for num in {1..300}
+ for num in ${trouble[@]}
  do
   makeasubmitdir ${num} ${mode}
  done
+ #for num in {1..300}
+ #do
+ # makeasubmitdir ${num} ${mode}
+ #done
 done
 
