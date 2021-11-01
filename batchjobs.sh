@@ -5,7 +5,8 @@ modes=( \
 # "startup"       \
  "startup_fixedSiPMTileAreasAndSN"       \
 ) 
-
+num=601
+upnum=620
 
 makeasubmitdir () {
 # write base for submit file
@@ -27,23 +28,27 @@ makeasubmitdir () {
  printf "Executable = ${origindir}/run_job.sh\n" >> submitfile
  printf "Should_Transfer_Files = YES \n" >> submitfile
  printf "WhenToTransferOutput = ON_EXIT\n" >> submitfile
- printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/step2_${mode}_cfg.py,${remotedir}/GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}.root\n" >> submitfile 
+
  printf "notify_user = skim2@cern.ch\n" >> submitfile
  printf "\n" >> submitfile
  printf "Output = logs/SN_\$(Cluster)_\$(Process).stdout\n" >> submitfile
  printf "Error  = logs/SN_\$(Cluster)_\$(Process).stderr\n" >> submitfile
  printf "Log    = logs/SN_\$(Cluster)_\$(Process).log\n" >> submitfile
  printf "\n" >> submitfile
+ until [ ${num} -gt ${upnum} ]
+ do
+ printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/step2_${mode}_cfg.py,${remotedir}/GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}.root\n" >> submitfile 
  printf "Arguments = inputFile=GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}.root ${mode} step2\n" >> submitfile
  printf "Queue\n" >> submitfile
  printf "\n" >> submitfile
  printf "\n" >> submitfile
  printf "\n" >> submitfile
+ num=$(( ${num} + 1 ))
+ done
  if [ ${doSubmit} = true ]
  then
   condor_submit submitfile
  fi
-
  popd > /dev/null
 
 
@@ -59,13 +64,6 @@ declare -a trouble=(463) #2p5
 
 for mode in ${modes[@]}
 do 
- #for num in ${trouble[@]}
- #do
- # makeasubmitdir ${num} ${mode}
- #done
- for num in {1..100}
- do
-  makeasubmitdir ${num} ${mode}
- done
+ makeasubmitdir ${num} ${upnum} ${mode}
 done
 

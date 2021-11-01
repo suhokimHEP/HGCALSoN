@@ -12,10 +12,10 @@ export PATH=${PATH}:/cvmfs/cms.cern.ch/common
 export CMS_PATH=/cvmfs/cms.cern.ch
 
 source /cvmfs/cms.cern.ch/cmsset_default.sh
-tar -xzf CMSSW_12_0_0_pre3.tar.gz
-rm -fv CMSSW_12_0_0_pre3.tar.gz
+tar -xzf CMSSW_12_1_0_pre4.tar.gz
+rm -fv CMSSW_12_1_0_pre4.tar.gz
 export SCRAM_ARCH=slc7_amd64_gcc900
-cd CMSSW_12_0_0_pre3/
+cd CMSSW_12_1_0_pre4/
 scramv1 b ProjectRename
 eval `scram runtime -sh`
 cd ../
@@ -40,8 +40,6 @@ then
  for FILE in *step2.root
  do
    echo "xrdcp -f ${FILE} ${outDir}/${FILE}"
-   echo "${FILE}" 
-   echo "${outDir}"
    xrdcp -f ${FILE} ${outDir}/$2
    rm ${FILE}
  done
