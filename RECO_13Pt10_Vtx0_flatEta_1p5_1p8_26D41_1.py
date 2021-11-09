@@ -38,7 +38,8 @@ process.maxEvents = cms.untracked.PSet(
 
 # Input source
 process.source = cms.Source("PoolSource",
-                            fileNames = cms.untracked.vstring('file:%s'%options.inputFile),
+                            fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/user/skim2/%s'%options.inputFile),
+                            #fileNames = cms.untracked.vstring('file:%s'%options.inputFile),
     #fileNames = cms.untracked.vstring("file:/afs/cern.ch/work/s/suho/public/CMSSW_12_0_0_pre3/src/GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_95_eol_step2.root"),
     secondaryFileNames = cms.untracked.vstring()
 )

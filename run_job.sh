@@ -4,7 +4,8 @@ echo "TEST"
 voms-proxy-info --all
 ls -l
 echo "DONE"
-outDir="/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/"
+outDir="/eos/uscms/store/user/skim2/"
+#outDir="/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/"
 #outDir="/afs/cern.ch/work/s/suho/public/CMSSW_12_0_0_pre2/src/haven"
 #outDir="root://cmseos.fnal.gov//store/user/suho/"
 echo output directory, $outDir
@@ -40,13 +41,13 @@ then
  for FILE in *step2.root
  do
    echo "xrdcp -f ${FILE} ${outDir}/${FILE}"
-   xrdcp -f ${FILE} ${outDir}/$2
+  xrdcp -f ${FILE} root://cmseos.fnal.gov//store/user/skim2/
    rm ${FILE}
  done
 else
  for FILE in *step3.root
  do
-   xrdcp -f ${FILE} ${outDir}/RECO/$2
+  xrdcp -f ${FILE} root://cmseos.fnal.gov//store/user/skim2/
    rm ${FILE}
  done
 fi

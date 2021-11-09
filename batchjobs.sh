@@ -1,12 +1,12 @@
 #!/bin/bash
 doSubmit=true
 modes=( \ 
-# "eol"       \
+ "eol"       \
 # "startup"       \
- "startup_fixedSiPMTileAreasAndSN"       \
+# "startup_fixedSiPMTileAreasAndSN"       \
 ) 
-num=601
-upnum=620
+num=51
+upnum=500
 
 makeasubmitdir () {
 # write base for submit file
@@ -14,7 +14,7 @@ makeasubmitdir () {
 
  # go to the directory
  origindir=$(pwd)
- remotedir=/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/GEN
+ #remotedir=/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/GEN
  submitdir=$(pwd)/gitignore/$1
  mkdir -p ${submitdir}
  pushd    ${submitdir}  > /dev/null
@@ -28,6 +28,7 @@ makeasubmitdir () {
  printf "Executable = ${origindir}/run_job.sh\n" >> submitfile
  printf "Should_Transfer_Files = YES \n" >> submitfile
  printf "WhenToTransferOutput = ON_EXIT\n" >> submitfile
+ printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/step2_${mode}_cfg.py\n" >> submitfile 
 
  printf "notify_user = skim2@cern.ch\n" >> submitfile
  printf "\n" >> submitfile
@@ -37,7 +38,7 @@ makeasubmitdir () {
  printf "\n" >> submitfile
  until [ ${num} -gt ${upnum} ]
  do
- printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/step2_${mode}_cfg.py,${remotedir}/GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}.root\n" >> submitfile 
+ #printf "Arguments = inputFile=Closeby_${num}.root ${mode} step2\n" >> submitfile
  printf "Arguments = inputFile=GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}.root ${mode} step2\n" >> submitfile
  printf "Queue\n" >> submitfile
  printf "\n" >> submitfile

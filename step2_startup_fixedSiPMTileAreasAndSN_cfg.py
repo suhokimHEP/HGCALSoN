@@ -39,7 +39,8 @@ process.maxEvents = cms.untracked.PSet(
 # Input source
 process.source = cms.Source("PoolSource",
                             dropDescendantsOfDroppedBranches = cms.untracked.bool(False),
-                            fileNames = cms.untracked.vstring('file:%s'%options.inputFile),
+                            #fileNames = cms.untracked.vstring('file:%s'%options.inputFile),
+                            fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/user/skim2/%s'%options.inputFile),
                             inputCommands = cms.untracked.vstring(
                                 'keep *',
                                 'drop *_genParticles_*_*',

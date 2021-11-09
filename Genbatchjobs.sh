@@ -1,8 +1,8 @@
 #!/bin/bash
 doSubmit=true
 
-num=601
-upnum=620
+num=101
+upnum=500
 
 makeasubmitdir () {
 # write base for submit file
@@ -23,6 +23,7 @@ makeasubmitdir () {
  printf "Executable = ${origindir}/gen_job.sh\n" >> submitfile
  printf "Should_Transfer_Files = YES \n" >> submitfile
  printf "WhenToTransferOutput = ON_EXIT\n" >> submitfile
+ #printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/Closeby.py\n" >> submitfile 
  printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_1.py\n" >> submitfile 
  printf "notify_user = skim2@cern.ch\n" >> submitfile
  printf "\n" >> submitfile

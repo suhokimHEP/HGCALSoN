@@ -35,7 +35,7 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(100),
+        input = cms.untracked.int32(40),
         output = cms.optional.untracked.allowed(cms.int32,cms.PSet)
 )
 
@@ -118,7 +118,8 @@ process.generator = cms.EDFilter("Pythia8PtGun",
             MinEta = cms.double(1.5),
         MinPhi = cms.double(-3.14159265359),
             MinPt = cms.double(10.),
-        ParticleID = cms.vint32(-13)
+        #ParticleID = cms.vint32(-13)
+        ParticleID = cms.vint32(-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13 )
     ),
     PythiaParameters = cms.PSet(
         parameterSets = cms.vstring()
