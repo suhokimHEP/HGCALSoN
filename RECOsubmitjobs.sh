@@ -1,24 +1,21 @@
 #!/bin/bash
 doSubmit=true
 modes=( \ 
- "eol"       \
+# "eol"       \
 # "startup"       \
-# "startup_sn2.0"       \
-# "startup_sn2.5"       \
-# "startup_sn3.0"       \
-# "startup_sn4.0"       \
+ "startup_sn2.0"       \
 ) 
-num=51
+num=1
 upnum=500
 
 
 makeasubmitdir () {
 # write base for submit file
- printf "Making submits for $1\n"
+ printf "Making submits for RECO/$3/$1\n"
 
  # go to the directory
  origindir=$(pwd)
- submitdir=$(pwd)/gitignore/$1
+ submitdir=$(pwd)/gitignore/RECO/$3/$1
  HGCP=/eos/uscms/store/user/skim2
  mkdir -p ${submitdir}
  pushd    ${submitdir}  > /dev/null

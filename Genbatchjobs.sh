@@ -1,7 +1,7 @@
 #!/bin/bash
 doSubmit=true
 
-num=101
+num=1
 upnum=500
 
 makeasubmitdir () {
@@ -53,4 +53,4 @@ makeasubmitdir () {
 
 }
 
- makeasubmitdir ${num} ${upnum} ${mode}
+ makeasubmitdir ${num} ${upnum}

@@ -1,21 +1,21 @@
 #!/bin/bash
 doSubmit=true
 modes=( \ 
- "eol"       \
+# "eol"       \
 # "startup"       \
-# "startup_fixedSiPMTileAreasAndSN"       \
+ "startup_fixedSiPMTileAreasAndSN"       \
 ) 
-num=51
+num=21
 upnum=500
 
 makeasubmitdir () {
 # write base for submit file
- printf "Making submits for $1\n"
+ printf "Making submits for DIGI/$3/$1\n"
 
  # go to the directory
  origindir=$(pwd)
  #remotedir=/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/GEN
- submitdir=$(pwd)/gitignore/$1
+ submitdir=$(pwd)/gitignore/$3/$1
  mkdir -p ${submitdir}
  pushd    ${submitdir}  > /dev/null
  printf " The directory is %s\n" $(pwd)
