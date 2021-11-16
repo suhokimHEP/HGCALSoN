@@ -5,17 +5,17 @@ modes=( \
 # "startup"       \
  "startup_fixedSiPMTileAreasAndSN"       \
 ) 
-num=21
-upnum=500
+num=4
+upnum=5
 aversion="trial"
 makeasubmitdir () {
 # write base for submit file
- printf "Making submits for DIGI/$3/${aversion}\n"
+ printf "Making submits for ${aversion}/$3\n"
 
  # go to the directory
  origindir=$(pwd)
  #remotedir=/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/GEN
- submitdir=$(pwd)/gitignore/$3/${aversion}
+ submitdir=$(pwd)/gitignore/${aversion}/$3/
  mkdir -p ${submitdir}
  pushd    ${submitdir}  > /dev/null
  printf " The directory is %s\n" $(pwd)
@@ -38,12 +38,8 @@ makeasubmitdir () {
  printf "\n" >> submitfile
  until [ ${num} -gt ${upnum} ]
  do
- #printf "Arguments = inputFile=Closeby_${num}.root ${mode} step2\n" >> submitfile
- printf "Arguments = inputFile=GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}.root ${mode} step2 ${aversion}\n" >> submitfile
+ printf "Arguments = inputFile=GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}.root ${mode} step2 ${aversion} ver=${aversion}\n" >> submitfile
  printf "Queue\n" >> submitfile
- printf "\n" >> submitfile
- printf "\n" >> submitfile
- printf "\n" >> submitfile
  num=$(( ${num} + 1 ))
  done
  if [ ${doSubmit} = true ]

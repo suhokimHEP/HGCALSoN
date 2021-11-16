@@ -8,6 +8,7 @@ import FWCore.ParameterSet.Config as cms
 from FWCore.ParameterSet.VarParsing import VarParsing
 options = VarParsing ('python')
 options.register('inputFile', None, VarParsing.multiplicity.singleton, VarParsing.varType.string, "input file to digitize")
+options.register('ver', None, VarParsing.multiplicity.singleton, VarParsing.varType.string, "aversion to digitize")
 options.register('targetSN',  2.0,    VarParsing.multiplicity.singleton, VarParsing.varType.float, "target S/N")
 options.parseArguments()
 
@@ -40,7 +41,9 @@ process.maxEvents = cms.untracked.PSet(
 process.source = cms.Source("PoolSource",
                             dropDescendantsOfDroppedBranches = cms.untracked.bool(False),
                             #fileNames = cms.untracked.vstring('file:%s'%options.inputFile),
-                            fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/user/skim2/%s'%options.inputFile),
+                            #fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/user/skim2/%s'%options.inputFile),
+                            fileNames = cms.untracked.vstring('file:/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/%s/GEN/%s'%(options.ver,options.inputFile)),
+                            #fileNames = cms.untracked.vstring('root://cms-xrd-global.cern.ch//store/group/dpg_hgcal/comm_hgcal/suhokim/%s/GEN/%s'%(options.ver,options.inputFile)),
                             inputCommands = cms.untracked.vstring(
                                 'keep *',
                                 'drop *_genParticles_*_*',

@@ -24,21 +24,21 @@ echo "doing ls"
 ls
 echo "now run"
 echo cmsRun
-if [[ $3 == "step2" ]]
+if [[ $2 == "DIGI" ]]
 then
- cmsRun step2_$2_cfg.py $1
+ cmsRun step2_$4_cfg.py $1 'ver='$3
 else
- cmsRun RECO_13Pt10_Vtx0_flatEta_1p5_1p8_26D41_1.py $1
+ cmsRun RECO_13Pt10_Vtx0_flatEta_1p5_1p8_26D41_1.py $1 'ver='$3
 fi
 echo "after run ls"
 ls
 
-if [[ $3 == "step2" ]]
+if [[ $2 == "DIGI" ]]
 then
  for FILE in *step2.root
  do
   echo "xrdcping"
-  xrdcp -f ${FILE} /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/$4/$2/
+  xrdcp -f ${FILE} /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/$3/DIGI/
   #xrdcp -f ${FILE} root://cms-xrd-global.cern.ch//store/group/dpg_hgcal/comm_hgcal/suhokim/
   #xrdcp -f ${FILE} root://cmseos.fnal.gov//store/user/skim2/
    rm ${FILE}
@@ -47,7 +47,7 @@ else
  for FILE in *step3.root
  do
   echo "xrdcping"
-  xrdcp -f ${FILE} /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/$4/RECO/
+  xrdcp -f ${FILE} /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/$3/RECO/
    rm ${FILE}
  done
 fi

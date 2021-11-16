@@ -2,7 +2,7 @@
 doSubmit=true
 
 num=1
-upnum=500
+upnum=10
 aversion="trial"
 makeasubmitdir () {
 # write base for submit file
@@ -10,7 +10,7 @@ makeasubmitdir () {
 
  # go to the directory
  origindir=$(pwd)
- submitdir=$(pwd)/gitignore/GEN/${aversion}
+ submitdir=$(pwd)/gitignore/${aversion}/GEN/
  mkdir -p ${submitdir}
  pushd    ${submitdir}  > /dev/null
  printf " The directory is %s\n" $(pwd)

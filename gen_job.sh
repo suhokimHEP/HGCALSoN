@@ -30,7 +30,8 @@ cmsRun GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_1.py 'Tag'=$1
 for FILE in GEN*.root
 do
   #xrdcp -f ${FILE} /uscms/home/skim2/nobackup/CMSSW_12_1_0_pre4/src/HGCALSoN/
-  xrdcp -f ${FILE} root://cms-xrd-global.cern.ch//store/group/dpg_hgcal/comm_hgcal/suhokim/$2/GEN/
+  #xrdcp -f ${FILE} root://cms-xrd-global.cern.ch//store/group/dpg_hgcal/comm_hgcal/suhokim/$2/GEN/
+  xrdcp -f ${FILE} /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/$2/GEN/
   rm ${FILE}
 done
 

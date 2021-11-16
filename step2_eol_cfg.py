@@ -8,6 +8,7 @@ import FWCore.ParameterSet.Config as cms
 from FWCore.ParameterSet.VarParsing import VarParsing
 options = VarParsing ('python')
 options.register('inputFile', None, VarParsing.multiplicity.singleton, VarParsing.varType.string, "input file to digitize")
+options.register('ver', None, VarParsing.multiplicity.singleton, VarParsing.varType.string, "aversion to digitize")
 options.parseArguments()
 
 from Configuration.Eras.Era_Phase2C9_cff import Phase2C9
@@ -39,7 +40,8 @@ process.maxEvents = cms.untracked.PSet(
 process.source = cms.Source("PoolSource",
                             dropDescendantsOfDroppedBranches = cms.untracked.bool(False),
                             #fileNames = cms.untracked.vstring('file:%s'%options.inputFile),
-                            fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/user/skim2/%s'%options.inputFile),
+                            #fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/user/skim2/%s'%options.inputFile),
+                            fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/group/dpg_hgcal/comm_hgcal/suhokim/%s/GEN/%s'%(options.ver,options.inputFile)),
                             inputCommands = cms.untracked.vstring(
                                 'keep *',
                                 'drop *_genParticles_*_*',

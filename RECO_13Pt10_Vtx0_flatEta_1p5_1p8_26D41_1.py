@@ -8,6 +8,7 @@ import FWCore.ParameterSet.Config as cms
 from FWCore.ParameterSet.VarParsing import VarParsing
 options = VarParsing ('python')
 options.register('inputFile', None, VarParsing.multiplicity.singleton, VarParsing.varType.string, "input file to digitize")
+options.register('ver', None, VarParsing.multiplicity.singleton, VarParsing.varType.string, "aversion to digitize")
 options.parseArguments()
 
 from Configuration.Eras.Era_Phase2C9_cff import Phase2C9
@@ -38,9 +39,10 @@ process.maxEvents = cms.untracked.PSet(
 
 # Input source
 process.source = cms.Source("PoolSource",
-                            fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/user/skim2/%s'%options.inputFile),
+                            #fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/user/skim2/%s'%options.inputFile),
                             #fileNames = cms.untracked.vstring('file:%s'%options.inputFile),
     #fileNames = cms.untracked.vstring("file:/afs/cern.ch/work/s/suho/public/CMSSW_12_0_0_pre3/src/GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_95_eol_step2.root"),
+                            fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/group/dpg_hgcal/comm_hgcal/suhokim/%s/DIGI/%s'%(options.ver,options.inputFile)),
     secondaryFileNames = cms.untracked.vstring()
 )
 
