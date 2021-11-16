@@ -7,15 +7,15 @@ modes=( \
 ) 
 num=21
 upnum=500
-
+aversion="trial"
 makeasubmitdir () {
 # write base for submit file
- printf "Making submits for DIGI/$3/$1\n"
+ printf "Making submits for DIGI/$3/${aversion}\n"
 
  # go to the directory
  origindir=$(pwd)
  #remotedir=/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/GEN
- submitdir=$(pwd)/gitignore/$3/$1
+ submitdir=$(pwd)/gitignore/$3/${aversion}
  mkdir -p ${submitdir}
  pushd    ${submitdir}  > /dev/null
  printf " The directory is %s\n" $(pwd)
@@ -39,7 +39,7 @@ makeasubmitdir () {
  until [ ${num} -gt ${upnum} ]
  do
  #printf "Arguments = inputFile=Closeby_${num}.root ${mode} step2\n" >> submitfile
- printf "Arguments = inputFile=GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}.root ${mode} step2\n" >> submitfile
+ printf "Arguments = inputFile=GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}.root ${mode} step2 ${aversion}\n" >> submitfile
  printf "Queue\n" >> submitfile
  printf "\n" >> submitfile
  printf "\n" >> submitfile
@@ -57,11 +57,7 @@ makeasubmitdir () {
 }
 
 #declare -a trouble=(10 13 16 87 88 89 92 93 171 172 177 239 248 258 273 278 283 361 362 363 369 374 390 398 400 423 445 447) #eol
-#declare -a trouble=(171) #eol
-#declare -a trouble=(11 12 14 75 364 369 370 373) #4p0
-#declare -a trouble=(43 211 308 417 472) #3p0
 declare -a trouble=(463) #2p5
-#declare -a trouble=(61 62 68) #2p0
 
 for mode in ${modes[@]}
 do 

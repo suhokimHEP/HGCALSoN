@@ -5,7 +5,6 @@ voms-proxy-info --all
 ls -l
 echo "DONE"
 outDir="/eos/uscms/store/user/skim2/"
-#outDir="/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/GEN/"
 echo output directory, $outDir
 export PATH=${PATH}:/cvmfs/cms.cern.ch/common
 export CMS_PATH=/cvmfs/cms.cern.ch
@@ -25,14 +24,13 @@ echo "doing ls"
 ls
 echo "now run"
 echo cmsRun
-#cmsRun Closeby.py 'Tag'=$1
 cmsRun GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_1.py 'Tag'=$1
 
 
-#for FILE in GEN*.root
-#do
-#  xrdcp -f ${FILE} /uscms/home/skim2/nobackup/CMSSW_12_1_0_pre4/src/HGCALSoN/
-#  #xrdcp -f ${FILE} root://cms-xrd-global.cern.ch//store/group/dpg_hgcal/comm_hgcal/suhokim/
-#  rm ${FILE}
-#done
+for FILE in GEN*.root
+do
+  #xrdcp -f ${FILE} /uscms/home/skim2/nobackup/CMSSW_12_1_0_pre4/src/HGCALSoN/
+  xrdcp -f ${FILE} root://cms-xrd-global.cern.ch//store/group/dpg_hgcal/comm_hgcal/suhokim/$2/GEN/
+  rm ${FILE}
+done
 

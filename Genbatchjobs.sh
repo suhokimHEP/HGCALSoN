@@ -3,14 +3,14 @@ doSubmit=true
 
 num=1
 upnum=500
-
+aversion="trial"
 makeasubmitdir () {
 # write base for submit file
- printf "Making submits for $1\n"
+ printf "Making submits for ${aversion}\n"
 
  # go to the directory
  origindir=$(pwd)
- submitdir=$(pwd)/gitignore/GEN/$1
+ submitdir=$(pwd)/gitignore/GEN/${aversion}
  mkdir -p ${submitdir}
  pushd    ${submitdir}  > /dev/null
  printf " The directory is %s\n" $(pwd)
@@ -33,7 +33,7 @@ makeasubmitdir () {
  printf "\n" >> submitfile
  until [ ${num} -gt ${upnum} ]
  do
- printf "Arguments = ${num}\n" >> submitfile
+ printf "Arguments = ${num} ${aversion}\n" >> submitfile
  printf "Queue\n" >> submitfile
 # printf "request_memory = 1GB\n" >> submitfile
 # printf "request_disk = 1MB\n" >> submitfile

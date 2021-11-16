@@ -4,10 +4,7 @@ echo "TEST"
 voms-proxy-info --all
 ls -l
 echo "DONE"
-#outDir="/eos/uscms/store/user/skim2/"
 outDir="/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/"
-#outDir="/afs/cern.ch/work/s/suho/public/CMSSW_12_0_0_pre2/src/haven"
-#outDir="root://cmseos.fnal.gov//store/user/suho/"
 echo output directory, $outDir
 export PATH=${PATH}:/cvmfs/cms.cern.ch/common
 export CMS_PATH=/cvmfs/cms.cern.ch
@@ -41,7 +38,7 @@ then
  for FILE in *step2.root
  do
   echo "xrdcping"
-  xrdcp -f ${FILE} /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/
+  xrdcp -f ${FILE} /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/$4/$2/
   #xrdcp -f ${FILE} root://cms-xrd-global.cern.ch//store/group/dpg_hgcal/comm_hgcal/suhokim/
   #xrdcp -f ${FILE} root://cmseos.fnal.gov//store/user/skim2/
    rm ${FILE}
@@ -50,9 +47,7 @@ else
  for FILE in *step3.root
  do
   echo "xrdcping"
-  xrdcp -f ${FILE} /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/
-  #xrdcp -f ${FILE} root://cms-xrd-global.cern.ch//store/group/dpg_hgcal/comm_hgcal/suhokim/
-  #xrdcp -f ${FILE} root://cmseos.fnal.gov//store/user/skim2/
+  xrdcp -f ${FILE} /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/$4/RECO/
    rm ${FILE}
  done
 fi

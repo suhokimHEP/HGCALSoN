@@ -7,15 +7,15 @@ modes=( \
 ) 
 num=1
 upnum=500
-
+aversion="trial"
 
 makeasubmitdir () {
 # write base for submit file
- printf "Making submits for RECO/$3/$1\n"
+ printf "Making submits for RECO/$3/${aversion}\n"
 
  # go to the directory
  origindir=$(pwd)
- submitdir=$(pwd)/gitignore/RECO/$3/$1
+ submitdir=$(pwd)/gitignore/RECO/$3/${aversion}
  HGCP=/eos/uscms/store/user/skim2
  mkdir -p ${submitdir}
  pushd    ${submitdir}  > /dev/null
@@ -38,9 +38,7 @@ makeasubmitdir () {
  until [ ${num} -gt ${upnum} ]
  do
  printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/RECO_13Pt10_Vtx0_flatEta_1p5_1p8_26D41_1.py\n" >> submitfile 
- #printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/RECO_13Pt10_Vtx0_flatEta_1p5_1p8_26D41_1.py,${HGCP}/GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}_${mode}_step2.root\n" >> submitfile 
- #printf "Arguments = inputFile=Closeby_${num}_${mode}_step2.root ${mode} step3\n" >> submitfile
- printf "Arguments = inputFile=GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}_${mode}_step2.root ${mode} step3\n" >> submitfile
+ printf "Arguments = inputFile=GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}_${mode}_step2.root ${mode} step3 ${aversion}\n" >> submitfile
  printf "Queue\n" >> submitfile
  printf "\n" >> submitfile
  printf "\n" >> submitfile
