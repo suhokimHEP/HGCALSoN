@@ -6,9 +6,9 @@ modes=( \
 # "startup_fixedSiPMTileAreasAndSN"       \
  "startup_sn2.0"       \
 ) 
-num=343
-upnum=345
-aversion="trial"
+num=1
+upnum=50
+aversion="fixed40mu"
 level="RECO"
 makeasubmitdir () {
 # write base for submit file
