@@ -1,9 +1,10 @@
 #!/bin/bash
+python Setupmake.py
 doSubmit=true
 
-num=1
-upnum=10
-aversion="trial"
+num=11
+upnum=500
+aversion="Rand40mu"
 makeasubmitdir () {
 # write base for submit file
  printf "Making submits for ${aversion}\n"

@@ -1,14 +1,19 @@
 #!/bin/bash
 doSubmit=true
 modes=( \ 
-# "eol"       \
+ "eol"       \
 # "startup"       \
 # "startup_fixedSiPMTileAreasAndSN"       \
- "startup_sn2.0"       \
+# "startup_sn2.0"       \
 ) 
+#num=160
+#upnum=242
+#num=311
+#upnum=319
 num=1
-upnum=50
-aversion="fixed40mu"
+upnum=500
+aversion="Rand40mu"
+#level="DIGI"
 level="RECO"
 makeasubmitdir () {
 # write base for submit file

@@ -41,7 +41,7 @@ process.source = cms.Source("PoolSource",
                             dropDescendantsOfDroppedBranches = cms.untracked.bool(False),
                             #fileNames = cms.untracked.vstring('file:%s'%options.inputFile),
                             #fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/user/skim2/%s'%options.inputFile),
-                            fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/group/dpg_hgcal/comm_hgcal/suhokim/%s/GEN/%s'%(options.ver,options.inputFile)),
+                            fileNames = cms.untracked.vstring('file:/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/%s/GEN/%s'%(options.ver,options.inputFile)),
                             inputCommands = cms.untracked.vstring(
                                 'keep *',
                                 'drop *_genParticles_*_*',

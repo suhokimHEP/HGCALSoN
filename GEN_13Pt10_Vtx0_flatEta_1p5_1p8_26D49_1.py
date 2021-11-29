@@ -35,14 +35,19 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-        input = cms.untracked.int32(10),
+        input = cms.untracked.int32(40),
         output = cms.optional.untracked.allowed(cms.int32,cms.PSet)
 )
 
-# random seeds                                                                                   
-process.RandomNumberGeneratorService.generator.initialSeed = cms.untracked.uint32(1234567)
-process.RandomNumberGeneratorService.VtxSmeared.initialSeed = cms.untracked.uint32(1)
-process.RandomNumberGeneratorService.mix.initialSeed = cms.untracked.uint32(1)
+from IOMC.RandomEngine.RandomServiceHelper import RandomNumberServiceHelper
+randHelper=RandomNumberServiceHelper(process.RandomNumberGeneratorService)
+randHelper.populate()
+
+
+## random seeds                                                                                   
+#process.RandomNumberGeneratorService.generator.initialSeed = cms.untracked.uint32(1234567)
+#process.RandomNumberGeneratorService.VtxSmeared.initialSeed = cms.untracked.uint32(1)
+#process.RandomNumberGeneratorService.mix.initialSeed = cms.untracked.uint32(1)
 
 # Input source                                                                                   
 process.source = cms.Source("EmptySource")
@@ -118,8 +123,8 @@ process.generator = cms.EDFilter("Pythia8PtGun",
             MinEta = cms.double(1.5),
         MinPhi = cms.double(-3.14159265359),
             MinPt = cms.double(9.9),
-        ParticleID = cms.vint32(-13)
-        #ParticleID = cms.vint32(-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13)
+        #ParticleID = cms.vint32(-13)
+        ParticleID = cms.vint32(-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13)
     ),
     PythiaParameters = cms.PSet(
         parameterSets = cms.vstring()

@@ -1,10 +1,10 @@
 #!/bin/bash
 dirs=( \ 
- "startup_sn2.0"       \
+# "startup_sn2.0"       \
 # "startup_sn2.5"       \
 # "startup_sn3.0"       \
 # "startup_sn4.0"       \
-# "eol"       \
+ "eol"       \
 # "startup"       \
 ) 
 for dir in ${dirs[@]}
@@ -13,7 +13,7 @@ do
  do
   #ls /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/${dir}/*_26D49_${num}_* | wc -l
   #ls /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/RECO/${dir}/*_26D49_${num}_* | wc -l
-  ls /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/40mu/RECO/*_26D49_${num}_${dir}* | wc -l
+  ls /eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/Rand40mu/RECO/*_26D49_${num}_${dir}* | wc -l
  done
 done
 
