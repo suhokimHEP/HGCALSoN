@@ -123,7 +123,7 @@ process.generator = cms.EDFilter("Pythia8PtGun",
             MinEta = cms.double(1.5),
         MinPhi = cms.double(-3.14159265359),
             MinPt = cms.double(9.9),
-        #ParticleID = cms.vint32(-13)
+        #ParticleID = cms.vint32(14)
         ParticleID = cms.vint32(-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13,-13)
     ),
     PythiaParameters = cms.PSet(

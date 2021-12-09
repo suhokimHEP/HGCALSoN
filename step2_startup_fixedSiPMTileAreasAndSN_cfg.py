@@ -9,7 +9,7 @@ from FWCore.ParameterSet.VarParsing import VarParsing
 options = VarParsing ('python')
 options.register('inputFile', None, VarParsing.multiplicity.singleton, VarParsing.varType.string, "input file to digitize")
 options.register('ver', None, VarParsing.multiplicity.singleton, VarParsing.varType.string, "aversion to digitize")
-options.register('targetSN',  2.0,    VarParsing.multiplicity.singleton, VarParsing.varType.float, "target S/N")
+options.register('targetSN',  4.0,    VarParsing.multiplicity.singleton, VarParsing.varType.float, "target S/N")
 options.parseArguments()
 
 from Configuration.Eras.Era_Phase2C9_cff import Phase2C9

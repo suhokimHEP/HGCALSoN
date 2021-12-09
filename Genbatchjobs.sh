@@ -2,9 +2,9 @@
 python Setupmake.py
 doSubmit=true
 
-num=11
+num=6
 upnum=500
-aversion="Rand40mu"
+aversion="Neutfit"
 makeasubmitdir () {
 # write base for submit file
  printf "Making submits for ${aversion}\n"

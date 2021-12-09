@@ -1,17 +1,13 @@
 #!/bin/bash
 doSubmit=true
 modes=( \ 
- "eol"       \
-# "startup"       \
+# "eol"       \
+ "startup"       \
 # "startup_fixedSiPMTileAreasAndSN"       \
-# "startup_sn2.0"       \
+# "startup_sn4.0"       \
 ) 
-#num=160
-#upnum=242
-#num=311
-#upnum=319
-num=1
-upnum=500
+num=112
+upnum=121
 aversion="Rand40mu"
 #level="DIGI"
 level="RECO"
@@ -60,6 +56,8 @@ fi
  else
   printf "Arguments = inputFile=GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_${num}_${mode}_step2.root ${level} ${aversion}\n" >> submitfile
  fi
+ printf "request_memory = 3GB\n" >> submitfile
+ printf "request_disk = 10MB\n" >> submitfile
   printf "Queue\n" >> submitfile
   num=$(( ${num} + 1 ))
   done

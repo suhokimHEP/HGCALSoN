@@ -42,7 +42,7 @@ process.source = cms.Source("PoolSource",
                             #fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/user/skim2/%s'%options.inputFile),
                             #fileNames = cms.untracked.vstring('file:%s'%options.inputFile),
     #fileNames = cms.untracked.vstring("file:/afs/cern.ch/work/s/suho/public/CMSSW_12_0_0_pre3/src/GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_95_eol_step2.root"),
-                            fileNames = cms.untracked.vstring('root://cmsxrootd.fnal.gov//store/group/dpg_hgcal/comm_hgcal/suhokim/%s/DIGI/%s'%(options.ver,options.inputFile)),
+                            fileNames = cms.untracked.vstring('file:/eos/cms/store/group/dpg_hgcal/comm_hgcal/suhokim/%s/DIGI/%s'%(options.ver,options.inputFile)),
     secondaryFileNames = cms.untracked.vstring()
 )
 

@@ -2,9 +2,9 @@
 doSubmit=true
 modes=( \ 
 # "eol"       \
-# "startup"       \
+ "startup"       \
 # "startup_fixedSiPMTileAreasAndSN"       \
- "startup_sn2.0"       \
+# "startup_sn2.0"       \
 ) 
 aversion="Rand40mu"
 #level="DIGI"
@@ -63,8 +63,7 @@ fi
 
 }
 
-#declare -a trouble=(3 6 8 10 15 18 66 96 118 125 130 139 251 252)
-declare -a trouble=(255 259 260 287 293 294 299 301 304 323 331 332 338 342 343 350 352 353 354 356 357 462 484 489 494 498 389 390 396)
+declare -a trouble=(18 23 28 33 38 43 48)
 
 for mode in ${modes[@]}
 do 

@@ -4,7 +4,8 @@ dirs=( \
 # "startup_sn2.5"       \
 # "startup_sn3.0"       \
 # "startup_sn4.0"       \
- "eol"       \
+ "startup_step"       \
+# "eol"       \
 # "startup"       \
 ) 
 for dir in ${dirs[@]}
