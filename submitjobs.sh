@@ -1,4 +1,5 @@
 #!/bin/bash
+python Setupmake.py
 doSubmit=true
 modes=( \ 
 # "eol"       \
