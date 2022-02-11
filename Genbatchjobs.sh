@@ -1,10 +1,10 @@
 #!/bin/bash
-python Setupmake.py
+#python Setupmake.py
 doSubmit=true
 
-num=6
-upnum=500
-aversion="Neutfit"
+num=1
+upnum=5
+aversion="WToMuNu"
 makeasubmitdir () {
 # write base for submit file
  printf "Making submits for ${aversion}\n"
@@ -25,19 +25,23 @@ makeasubmitdir () {
  printf "Should_Transfer_Files = YES \n" >> submitfile
  printf "WhenToTransferOutput = ON_EXIT\n" >> submitfile
  #printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/Closeby.py\n" >> submitfile 
- printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_1.py\n" >> submitfile 
+ #printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/GEN_13Pt10_Vtx0_flatEta_1p5_1p8_26D49_1.py\n" >> submitfile 
+ #printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/WToLNu_TuneZ2star_pthat250-300_14TeV_pythia6_cff_GEN_SIM.py\n" >> submitfile 
+ printf "Transfer_Input_Files = ${origindir}/CMSSW_12_1_0_pre4.tar.gz,${origindir}/WToMuNu_14TeV_TuneCP5_pythia8_cfi_GEN_SIM.py\n" >> submitfile 
  printf "notify_user = skim2@cern.ch\n" >> submitfile
  printf "\n" >> submitfile
  printf "Output = logs/SN_\$(Cluster)_\$(Process).stdout\n" >> submitfile
  printf "Error  = logs/SN_\$(Cluster)_\$(Process).stderr\n" >> submitfile
  printf "Log    = logs/SN_\$(Cluster)_\$(Process).log\n" >> submitfile
  printf "\n" >> submitfile
+ printf "request_memory = 1GB\n" >> submitfile
+ printf "request_disk = 1MB\n" >> submitfile
+ printf "+JobFlavour = \"microcentury\"\n"
+ printf "\n" >> submitfile
  until [ ${num} -gt ${upnum} ]
  do
  printf "Arguments = ${num} ${aversion}\n" >> submitfile
  printf "Queue\n" >> submitfile
-# printf "request_memory = 1GB\n" >> submitfile
-# printf "request_disk = 1MB\n" >> submitfile
  printf "\n" >> submitfile
  printf "\n" >> submitfile
  printf "\n" >> submitfile
